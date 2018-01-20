@@ -20,7 +20,7 @@ from . import views
 import allauth
 
 urlpatterns = [
-    url(r'^admin', admin.site.urls),
+    url(r'^admin/', admin.site.urls),
     url(r'^$', views.HomeView.as_view(), name='home'),
     url(r'^accounts/', include('allauth.account.urls')),
 ]
