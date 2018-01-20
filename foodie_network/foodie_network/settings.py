@@ -42,8 +42,22 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
-    # 'apps.account'
+    'allauth.socialaccount.providers.facebook',
+    'allauth.socialaccount.providers.google',
+    'allauth.socialaccount.providers.twitter',
+
 ]
+
+SOCIALACCOUNT_PROVIDERS =  { 'facebook':
+                               {'METHOD': 'oauth2',
+                                'SCOPE': ['email'],
+                                'AUTH_PARAMS': {'auth_type': 'reauthenticate'},
+                                'LOCALE_FUNC': lambda request: 'en_US',
+                                'VERSION': 'v2.4'
+                               },
+                               'google':{},
+                               'twitter':{},
+                           }
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
