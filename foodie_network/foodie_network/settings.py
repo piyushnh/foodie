@@ -46,18 +46,20 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.google',
     'allauth.socialaccount.providers.twitter',
 
+
 ]
 
-SOCIALACCOUNT_PROVIDERS =  { 'facebook':
-                               {'METHOD': 'oauth2',
-                                'SCOPE': ['email'],
-                                'AUTH_PARAMS': {'auth_type': 'reauthenticate'},
-                                'LOCALE_FUNC': lambda request: 'en_US',
-                                'VERSION': 'v2.4'
-                               },
-                               'google':{},
-                               'twitter':{},
-                           }
+SOCIALACCOUNT_PROVIDERS =  {'facebook':
+                            {'METHOD': 'oauth2',
+                             'SCOPE': ['email'],
+                             'AUTH_PARAMS': {'auth_type': 'reauthenticate'},
+                             'LOCALE_FUNC': lambda request: 'en_US',
+                             'VERSION': 'v2.4'}, 'google':
+                            { 'SCOPE': ['email'],
+                              'AUTH_PARAMS': { 'access_type': 'online' }
+                            },
+                            'twitter':{}
+                            }
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -139,6 +141,8 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+INTERNAL_IPS = ('127.0.0.1')
+
 SITE_ID = 1
 
 # Add the 'allauth' backend to AUTHENTICATION_BACKEND and keep default ModelBackend
@@ -166,4 +170,8 @@ EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_HOST_USER = DEFAULT_FROM_EMAIL = 'piyush.n.h@gmail.com'
-EMAIL_HOST_PASSWORD = 'piyush9480942548'
+# EMAIL_HOST_PASSWORD = 'piyush9480942548'
+
+SOCIALACCOUNT_EMAIL_VERIFICATION = 'none'
+SOCIALACCOUNT_EMAIL_REQUIRED = False
+SOCIALACCOUNT_QUERY_EMAIL = True
