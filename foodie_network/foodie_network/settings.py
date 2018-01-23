@@ -26,6 +26,8 @@ SECRET_KEY = '=j7&vuq%ceu74hn8n&jp12dk5jp_^si7ng16*kf$w*-+r(79ly'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+SOCIALACCOUNT_AUTO_SIGNUP = True
+
 ALLOWED_HOSTS = []
 
 
@@ -54,7 +56,8 @@ SOCIALACCOUNT_PROVIDERS =  {'facebook':
                              'SCOPE': ['email'],
                              'AUTH_PARAMS': {'auth_type': 'reauthenticate'},
                              'LOCALE_FUNC': lambda request: 'en_US',
-                             'VERSION': 'v2.4'}, 'google':
+                             'VERSION': 'v2.4'},
+                             'google':
                             { 'SCOPE': ['email'],
                               'AUTH_PARAMS': { 'access_type': 'online' }
                             },
