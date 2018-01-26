@@ -46,7 +46,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'allauth.socialaccount.providers.facebook',
     'allauth.socialaccount.providers.google',
-    # 'allauth.socialaccount.providers.twitter',
+
 
 
 ]
@@ -61,7 +61,7 @@ SOCIALACCOUNT_PROVIDERS =  {'facebook':
                             { 'SCOPE': ['email'],
                               'AUTH_PARAMS': { 'access_type': 'online' }
                             },
-                            'twitter':{}
+
                             }
 
 MIDDLEWARE = [
