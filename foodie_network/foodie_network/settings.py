@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
+    'apps.custom_account',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
@@ -169,11 +170,7 @@ ACCOUNT_USERNAME_REQUIRED = False
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 
-# EMAIL_USE_TLS = True
-# EMAIL_HOST = 'smtp.gmail.com'
-# EMAIL_PORT = 587
-# EMAIL_HOST_USER = DEFAULT_FROM_EMAIL = 'piyush.n.h@gmail.com'
-# EMAIL_HOST_PASSWORD = 'piyush9480942548'
+
 
 SOCIALACCOUNT_EMAIL_VERIFICATION = 'none'
 SOCIALACCOUNT_EMAIL_REQUIRED = False
