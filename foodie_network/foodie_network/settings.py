@@ -41,8 +41,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'apps.custom_account',
     'django.contrib.sites',
+    'apps.custom_account',
+    'apps.userprofiles',
 
 
 ] + ALLAUTH_INSTALLED_APPS
