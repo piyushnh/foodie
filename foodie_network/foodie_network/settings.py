@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 """
 
 import os
+from apps.custom_account.settings import *
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -40,30 +41,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django.contrib.sites',
     'apps.custom_account',
-    'allauth',
-    'allauth.account',
-    'allauth.socialaccount',
-    'allauth.socialaccount.providers.facebook',
-    'allauth.socialaccount.providers.google',
+    'django.contrib.sites',
 
 
+] + ALLAUTH_INSTALLED_APPS
 
-]
-
-SOCIALACCOUNT_PROVIDERS =  {'facebook':
-                            {'METHOD': 'oauth2',
-                             'SCOPE': ['email'],
-                             'AUTH_PARAMS': {'auth_type': 'reauthenticate'},
-                             'LOCALE_FUNC': lambda request: 'en_US',
-                             'VERSION': 'v2.4'},
-                             'google':
-                            { 'SCOPE': ['email'],
-                              'AUTH_PARAMS': { 'access_type': 'online' }
-                            },
-
-                            }
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -145,33 +128,6 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-INTERNAL_IPS = ('127.0.0.1')
-
-SITE_ID = 1
-
-# Add the 'allauth' backend to AUTHENTICATION_BACKEND and keep default ModelBackend
-AUTHENTICATION_BACKENDS = [ 'django.contrib.auth.backends.ModelBackend',
-                           'allauth.account.auth_backends.AuthenticationBackend']
-# EMAIL_BACKEND so allauth can proceed to send confirmation emails
-# ONLY for development/testing use console
-EMAIL_BACKEND='django.core.mail.backends.console.EmailBackend'
-
-# Custom allauth settings
-# Use email as the primary identifier
-ACCOUNT_AUTHENTICATION_METHOD = 'email'
-ACCOUNT_EMAIL_REQUIRED = True
-
-# Make email verification mandatory to avoid junk email accounts
-ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
-
-# Eliminate need to provide username, as it's a very old practice
-ACCOUNT_USERNAME_REQUIRED = False
 
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
-
-
-
-SOCIALACCOUNT_EMAIL_VERIFICATION = 'none'
-SOCIALACCOUNT_EMAIL_REQUIRED = False
-SOCIALACCOUNT_QUERY_EMAIL = True

@@ -1,5 +1,9 @@
-from django.conf.urls import url, include
-app_name = 'custom_account'
+from django.conf.urls import url
+from django.urls import re_path, include
+from . import views
+
+
 urlpatterns = [
-    url(r'^$', include('allauth.urls'), name='accounts'),
+    re_path(r'^', include('allauth.urls' )),
+
 ]
