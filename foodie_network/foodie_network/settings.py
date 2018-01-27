@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 """
 
 import os
+from apps.custom_account.settings import *
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -26,6 +27,8 @@ SECRET_KEY = '=j7&vuq%ceu74hn8n&jp12dk5jp_^si7ng16*kf$w*-+r(79ly'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+SOCIALACCOUNT_AUTO_SIGNUP = True
+
 ALLOWED_HOSTS = []
 
 
@@ -38,7 +41,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-]
+    'apps.custom_account',
+    'django.contrib.sites',
+
+
+] + ALLAUTH_INSTALLED_APPS
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -119,3 +127,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
