@@ -45,7 +45,7 @@ AUTHENTICATION_BACKENDS = [ 'django.contrib.auth.backends.ModelBackend',
                            'allauth.account.auth_backends.AuthenticationBackend']
 # EMAIL_BACKEND so allauth can proceed to send confirmation emails
 # ONLY for development/testing use console
-EMAIL_BACKEND='django.core.mail.backends.console.EmailBackend'
+EMAIL_BACKEND='django.core.mail.backends.smtp.EmailBackend'
 
 # Custom allauth settings
 # Use email as the primary identifier
@@ -61,6 +61,12 @@ ACCOUNT_USERNAME_REQUIRED = False
 SOCIALACCOUNT_EMAIL_VERIFICATION = 'none'
 SOCIALACCOUNT_EMAIL_REQUIRED = False
 SOCIALACCOUNT_QUERY_EMAIL = True
+
+# EMAIL_USE_SSL = True
+# EMAIL_HOST = 'smtp.gmail.com'
+# EMAIL_PORT = 465
+# EMAIL_HOST_USER = 'account@gmail.com'
+# EMAIL_HOST_PASSWORD = 'passsword'
 
 #Makes user logout immediately after logout is pressed. Doesn't wait for confirmation
 ACCOUNT_LOGOUT_ON_GET = True
