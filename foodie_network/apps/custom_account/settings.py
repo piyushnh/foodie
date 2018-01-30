@@ -64,3 +64,7 @@ SOCIALACCOUNT_QUERY_EMAIL = True
 
 #Makes user logout immediately after logout is pressed. Doesn't wait for confirmation
 ACCOUNT_LOGOUT_ON_GET = True
+
+
+#used to display custom signup form
+ACCOUNT_SIGNUP_FORM_CLASS = 'apps.custom_account.forms.SignupForm'
