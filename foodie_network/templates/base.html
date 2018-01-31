@@ -13,7 +13,7 @@
 
   </head>
   <body>
-    
+
     <nav class="navbar navbar-default">
 <div class="container-fluid">
   <!-- Brand and toggle get grouped for better mobile display -->
@@ -33,6 +33,7 @@
     <ul class="nav navbar-nav navbar-right">
       {% if user.is_authenticated %}
       <li><a href="{% url 'account_logout' %}">Logout</a></li>
+      <li><a href="{% url 'userprofiles:profile' pk=user.pk %}">Profile</a></li>
       {% else %}
       <li><a href="{% url 'account_login' %}">Login</a></li>
       <li><a href="{% url 'account_signup' %}">Signup</a></li>

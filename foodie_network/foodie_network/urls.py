@@ -18,12 +18,14 @@ from django.urls import path
 from django.conf.urls import url, include
 from django.conf import settings
 from . import views
+from django.conf.urls.static import static
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', views.HomeView.as_view(), name='home'),
+    url(r'^profiles/', include('apps.userprofiles.urls')),
     url(r'^accounts/', include('apps.custom_account.urls')),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 if settings.DEBUG:
     import debug_toolbar
