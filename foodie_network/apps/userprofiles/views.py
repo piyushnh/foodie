@@ -13,9 +13,13 @@ from .models import Profile
 User = get_user_model()
 
 
-class ProfileView(LoginRequiredMixin, DetailView):
+class PublicProfileView(LoginRequiredMixin,DetailView):
     model = User
-    template_name = 'userprofiles/profile.html'
+    template_name = 'userprofiles/public_profile.html'
+
+class UserProfileView(LoginRequiredMixin,DetailView):
+    model = User
+    template_name = 'userprofiles/user_profile.html'
 
 #Function to update profile
 @login_required
