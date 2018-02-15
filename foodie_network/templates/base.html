@@ -1,3 +1,5 @@
+{% load staticfiles %}
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -5,12 +7,12 @@
     {% block title %}
        <title>Base</title>
     {% endblock %}
-    <!-- Latest compiled and minified CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-  integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
-    integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
+
+  <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link rel="stylesheet" href="{% static 'css/base.css'%}">
   </head>
   <body>
 
@@ -27,17 +29,36 @@
     <a class="navbar-brand" href="{% url 'home' %}">GoodFoods</a>
   </div>
 
+  {% if user.is_authenticated %}
+  {%include 'search/search.html'%}
+  {%endif%}
+
   <!-- Collect the nav links, forms, and other content for toggling -->
   <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
     <ul class="nav navbar-nav navbar-right">
+
+      <!-- Single button -->
       {% if user.is_authenticated %}
-      <li><a href="{% url 'account_logout' %}">Logout</a></li>
-      <li><a href="{% url 'userprofiles:profile' pk=user.pk %}">Profile</a></li>
+      <div class="btn-group">
+        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <span class="glyphicon glyphicon-cog" aria-hidden="true"></span><span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+          <li><a href="{% url 'userprofiles:user_profile' pk=user.pk %}">Profile</a></li>
+          <li><a href="{%url 'home'%}">Home</a></li>
+          <!-- <li><a href="#">Something else here</a></li> -->
+          <li role="separator" class="divider"></li>
+          <li><a href="{% url 'account_logout' %}">Logout</a></li>
+        </ul>
+      </div>
+
       {% else %}
       <li><a href="{% url 'account_login' %}">Login</a></li>
       <li><a href="{% url 'account_signup' %}">Signup</a></li>
+
       {% endif %}
+  
     </ul>
   </div><!-- /.navbar-collapse -->
 </div><!-- /.container-fluid -->
@@ -49,10 +70,19 @@
    </div>
 
    <div class="container">
+
      {% block content %}
 
      {% endblock %}
    </div>
+
+    <script
+  src="http://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+   <!-- Latest compiled and minified JavaScript -->
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+   integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
   </body>
 </html>

@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block body_block %}
+
+{% if user.profile %}
+<div class="jumbotron">
+  <h2>Name: {{user.first_name}} {{user.last_name}}</h2>
+  {% if  user.profile.date_of_birth%}<h2>DOB: {{user.profile.date_of_birth|date:"D, d /m /Y"}}</h2>{% endif %}
+  {% if user.profile.profile_pic %}<img src="{{user.profile.profile_pic.url}}">{% endif %}
+
+  <br>
+</div>
+
+{% else %}
+<h2>Oops! Nothing to display!</h2>
+
+
+
+{% endif %}
+
+{% endblock %}

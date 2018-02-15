@@ -25,6 +25,7 @@ urlpatterns = [
     url(r'^$', views.HomeView.as_view(), name='home'),
     url(r'^profiles/', include('apps.userprofiles.urls')),
     url(r'^accounts/', include('apps.custom_account.urls')),
+    url(r'^search/', include('apps.search.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 if settings.DEBUG:

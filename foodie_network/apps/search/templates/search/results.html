@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block body_block %}
+
+    {% if  users.count%}
+    <h2>The search results are:</h2>
+    <br>
+    {% for user in users %}
+          <a href="{% url 'userprofiles:public_profile' pk=user.pk %}"><h3>{{user.first_name}} {{user.last_name}}</h3></a>
+
+          <br><br>
+    {% endfor %}
+
+    {% else %}
+    <h1>Oops! No results found!</h1>
+    {% endif %}
+{% endblock %}
