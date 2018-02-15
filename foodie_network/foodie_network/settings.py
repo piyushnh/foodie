@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'apps.custom_account',
     'apps.userprofiles',
+    'apps.search',
 
 
 ] + ALLAUTH_INSTALLED_APPS
