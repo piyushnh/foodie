@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'debug_toolbar',
     'django.contrib.sites',
+
+    'apps.friendship',
     'apps.custom_account',
     'apps.userprofiles',
     'apps.search',
@@ -133,7 +135,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
-    
+
 ]
 
 

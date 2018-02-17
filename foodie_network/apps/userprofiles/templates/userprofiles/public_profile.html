@@ -14,8 +14,9 @@
 {% else %}
 <h2>Oops! Nothing to display!</h2>
 
-
-
 {% endif %}
+<h3> <a href="{% url 'friendship:friendship_add_friend' username=user.username %}">
+ <button type="button" class="btn btn-default">Add Friend</button>
+</a> </h3>
 
 {% endblock %}
