@@ -6,6 +6,13 @@
     <!-- bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
       integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+        rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/open-iconic/1.1.1/font/css/open-iconic-bootstrap.min.css" rel="stylesheet">
+
+
+
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -16,17 +23,28 @@
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
+          {% include 'search/search.html'%}
 
         </ul>
 
         <ul class="nav justify-content-end">
           {% if user.is_authenticated%}
 
-          {% include 'search/search.html'%}
+          <li class="nav-item dropdown" style="margin-right:1.5rem">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <span class="oi oi-people"></span>
+            </a>
+            <div class="dropdown-menu"  aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="{% url 'friendship:friendship_request_list' %}" >Friend Requests</a>
+              <a class="dropdown-item" href="{%url 'friendship:friendship_requests_rejected'%}" >Rejected Requests</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="{% url 'friendship:friendship_view_friends' user.username%}" >Friends List</a>
+            </div>
+          </li>
 
           <li class="nav-item dropdown" style="margin-right:1.5rem">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Dropdown
+              <i class="material-icons">account_circle</i>
             </a>
             <div class="dropdown-menu"  aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="{% url 'userprofiles:user_profile' pk=user.pk %}" >Profile</a>

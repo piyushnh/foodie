@@ -3,7 +3,7 @@
 {% block body_block %}
 <div class="container">
 
-<div class="card" style="width: 38rem;margin:auto;">
+<div class="card" style="width: 45rem;margin:auto;height:50rem;">
   {% if user.profile.profile_pic %}
   <img class="card-img-top" src="{{user.profile.profile_pic.url}}" alt="Card image cap">
   {% else %}
@@ -20,8 +20,8 @@
     <li class="list-group-item">Vestibulum at eros</li>
   </ul>
   <div class="card-body">
-    <a href="#" class="card-link">Card link</a>
-    <a href="#" class="card-link">Another link</a>
+    <a href="{% url 'friendship:friendship_add_friend' user.username %}" class="btn btn-primary btn-lg active card-link" role="button" aria-pressed="true" >Add friend</a>
+    <a href="{% url 'friendship:follower_add' user.username %}" class="btn btn-primary btn-lg active card-link" role="button" aria-pressed="true">Follow</a>
   </div>
 </div>
 
