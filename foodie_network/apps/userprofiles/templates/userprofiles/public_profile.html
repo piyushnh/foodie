@@ -1,22 +1,29 @@
 {% extends "base.html" %}
 
 {% block body_block %}
+<div class="container">
 
-{% if user.profile %}
-<div class="jumbotron">
-  <h2>Name: {{user.first_name}} {{user.last_name}}</h2>
-  {% if  user.profile.date_of_birth%}<h2>DOB: {{user.profile.date_of_birth|date:"D, d /m /Y"}}</h2>{% endif %}
-  {% if user.profile.profile_pic %}<img src="{{user.profile.profile_pic.url}}">{% endif %}
+<div class="card" style="width: 38rem;margin:auto;">
+  {% if user.profile.profile_pic %}
+  <img class="card-img-top" src="{{user.profile.profile_pic.url}}" alt="Card image cap">
+  {% else %}
+  <img class="card-img-top" src="https://static-prod.testony.com/img/defaultavatar-8ab1ea5e26.jpg" alt="Card image cap">
+  {% endif %}
 
-  <br>
+  <div class="card-body">
+    <h5 class="card-title">{{user.first_name}} {{user.last_name}}</h5>
+    <p class="card-text">some status shit will be written here</p>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">DOB: {{user.profile.date_of_birth|date:"D, d /m /Y"}}</li>
+    <li class="list-group-item">Dapibus ac facilisis in</li>
+    <li class="list-group-item">Vestibulum at eros</li>
+  </ul>
+  <div class="card-body">
+    <a href="#" class="card-link">Card link</a>
+    <a href="#" class="card-link">Another link</a>
+  </div>
 </div>
 
-{% else %}
-<h2>Oops! Nothing to display!</h2>
-
-{% endif %}
-<h3> <a href="{% url 'friendship:friendship_add_friend' username=user.username %}">
- <button type="button" class="btn btn-default">Add Friend</button>
-</a> </h3>
-
+</div>
 {% endblock %}

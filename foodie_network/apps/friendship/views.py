@@ -39,7 +39,7 @@ def friendship_add_friend(request, to_username, template_name='friendship/friend
         except AlreadyExistsError as e:
             ctx['errors'] = ["%s" % e]
         else:
-            return redirect('friendship_request_list')
+            return redirect('friendship:friendship_request_list')
 
     return render(request, template_name, ctx)
 
