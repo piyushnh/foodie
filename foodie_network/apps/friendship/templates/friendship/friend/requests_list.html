@@ -1,7 +1,21 @@
-<ul>
-{% for friendship_request in requests %}
-    <li>{{ friendship_request.from_user }} to {{ friendship_request.to_user }} <a href="{% url 'friendship:friendship_requests_detail' friendship_request.id %}">view</a></li>
-{% empty %}
-</ul>
-<div>no requests :(</div>
-{% endfor %}
+{% extends "base.html" %}
+{% block content %}
+  <div class="container">
+    <ul>
+    {% for friendship_request in requests %}
+        <li>{{ friendship_request.from_user }} to {{ friendship_request.to_user }} <a href="{% url 'friendship:friendship_requests_detail' friendship_request.id %}">view</a></li>
+    {% empty %}
+    </ul>
+    <div>no requests :(</div>
+    {% endfor %}
+  </div>
+{% endblock %}
+
+
+<div class="media">
+  <img class="mr-3 rounded-circle" src="{{friendship_request.from_user.profile.profile_pic.url}}" alt="https://static-prod.testony.com/img/defaultavatar-8ab1ea5e26.jpg">
+  <div class="media-body">
+    <h5 class="mt-0">{{friendship_request.from_user.first_name}} {{friendship_request.from_user.last_name}}</h5>
+    Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+  </div>
+</div>

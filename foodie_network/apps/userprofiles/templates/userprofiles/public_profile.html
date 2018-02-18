@@ -4,11 +4,8 @@
 <div class="container">
 
 <div class="card" style="width: 45rem;margin:auto;height:50rem;">
-  {% if user.profile.profile_pic %}
-  <img class="card-img-top" src="{{user.profile.profile_pic.url}}" alt="Card image cap">
-  {% else %}
-  <img class="card-img-top" src="https://static-prod.testony.com/img/defaultavatar-8ab1ea5e26.jpg" alt="Card image cap">
-  {% endif %}
+
+  <img class="card-img-top" src="{{user.profile.profile_pic.url}}" alt="https://static-prod.testony.com/img/defaultavatar-8ab1ea5e26.jpg">
 
   <div class="card-body">
     <h5 class="card-title">{{user.first_name}} {{user.last_name}}</h5>

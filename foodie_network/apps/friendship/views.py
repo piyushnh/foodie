@@ -88,8 +88,10 @@ def friendship_request_list(request, template_name='friendship/friend/requests_l
     """ View unread and read friendship requests """
     # friendship_requests = Friend.objects.requests(request.user)
     friendship_requests = FriendshipRequest.objects.filter(rejected__isnull=True)
+    f_request = get_object_or_404(FriendshipRequest, id=friendship_requests.id)
 
-    return render(request, template_name, {'requests': friendship_requests})
+
+    return render(request, template_name, {'requests': friendship_requests, 'friendship_request:f_request'})
 
 
 @login_required
