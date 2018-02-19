@@ -52,9 +52,10 @@ def friendship_accept(request, friendship_request_id):
             request.user.friendship_requests_received,
             id=friendship_request_id)
         f_request.accept()
-        return redirect('friendship_view_friends', username=request.user.username)
+        # return redirect('friendship:friendship_view_friends', username=request.user.username)
 
-    return redirect('friendship_requests_detail', friendship_request_id=friendship_request_id)
+    return redirect('friendship:friendship_request_list')
+
 
 
 @login_required
@@ -65,9 +66,10 @@ def friendship_reject(request, friendship_request_id):
             request.user.friendship_requests_received,
             id=friendship_request_id)
         f_request.reject()
-        return redirect('friendship_request_list')
+        # return redirect('friendship:friendship_request_list')
 
-    return redirect('friendship_requests_detail', friendship_request_id=friendship_request_id)
+    # return redirect('friendship:friendship_requests_detail', friendship_request_id=friendship_request_id)
+    return redirect('friendship:friendship_request_list')
 
 
 @login_required
@@ -78,20 +80,26 @@ def friendship_cancel(request, friendship_request_id):
             request.user.friendship_requests_sent,
             id=friendship_request_id)
         f_request.cancel()
-        return redirect('friendship_request_list')
+        return redirect('friendship:friendship_request_list')
 
-    return redirect('friendship_requests_detail', friendship_request_id=friendship_request_id)
+    return redirect('friendship:friendship_requests_detail', friendship_request_id=friendship_request_id)
 
 
 @login_required
 def friendship_request_list(request, template_name='friendship/friend/requests_list.html'):
     """ View unread and read friendship requests """
     # friendship_requests = Friend.objects.requests(request.user)
-    friendship_requests = FriendshipRequest.objects.filter(rejected__isnull=True)
-    f_request = get_object_or_404(FriendshipRequest, id=friendship_requests.id)
+    friendship_requests = FriendshipRequest.objects.filter(rejected__isnull=True,to_user=request.user)
 
+    return render(request, template_name, {'requests': friendship_requests})
 
-    return render(request, template_name, {'requests': friendship_requests, 'friendship_request:f_request'})
+@login_required
+def friendship_requests_sent_list(request, template_name='friendship/friend/requests_sent_list.html'):
+    """ View unread and read friendship requests """
+    # friendship_requests = Friend.objects.requests(request.user)
+    friendship_requests = FriendshipRequest.objects.filter(from_user=request.user)
+
+    return render(request, template_name, {'requests': friendship_requests})
 
 
 @login_required
@@ -146,7 +154,7 @@ def follower_add(request, followee_username, template_name='friendship/follow/ad
         except AlreadyExistsError as e:
             ctx['errors'] = ["%s" % e]
         else:
-            return redirect('friendship_following', username=follower.username)
+            return redirect('friendship:friendship_following', username=follower.username)
 
     return render(request, template_name, ctx)
 
@@ -158,7 +166,7 @@ def follower_remove(request, followee_username, template_name='friendship/follow
         followee = user_model.objects.get(username=followee_username)
         follower = request.user
         Follow.objects.remove_follower(follower, followee)
-        return redirect('friendship_following', username=follower.username)
+        return redirect('friendship:friendship_following', username=follower.username)
 
     return render(request, template_name, {'followee_username': followee_username})
 

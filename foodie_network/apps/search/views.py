@@ -10,6 +10,6 @@ def user_search(request):
     if 'q' in request.GET :
          query = request.GET.get('q')
          # results = {}
-         users = User.objects.filter(Q(first_name__icontains = query) | Q(last_name__icontains = query))
+         users = User.objects.filter(Q(first_name__icontains = query) | Q(last_name__icontains = query),~Q(id = request.user.id))
          return render (request, 'search/results.html', {'users':users})
     return render(request, 'search/error.html')

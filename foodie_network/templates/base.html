@@ -22,13 +22,14 @@
       </button>
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        {% if user.is_authenticated%}
         <ul class="navbar-nav mr-auto">
           {% include 'search/search.html'%}
 
         </ul>
 
         <ul class="nav justify-content-end">
-          {% if user.is_authenticated%}
+
 
           <li class="nav-item dropdown" style="margin-right:1.5rem">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -37,6 +38,7 @@
             <div class="dropdown-menu"  aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="{% url 'friendship:friendship_request_list' %}" >Friend Requests</a>
               <a class="dropdown-item" href="{%url 'friendship:friendship_requests_rejected'%}" >Rejected Requests</a>
+              <a class="dropdown-item" href="{% url 'friendship:friendship_requests_sent_list' %}" >Sent Requests</a>
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" href="{% url 'friendship:friendship_view_friends' user.username%}" >Friends List</a>
             </div>
@@ -54,9 +56,11 @@
             </div>
           </li>
           {% else %}
+          <ul class="navbar-nav mr-auto">
+          </ul>
           <form class="form-inline">
-              <button class="btn btn-outline-success" type="button" style="margin-right:0.5rem"><a  href="{% url 'account_login' %}">Login</a></button>
-              <button class="btn btn-outline-success" type="button"><a  href="{% url 'account_signup' %}">Sign up</a></button>
+              <a class="btn btn-outline-success"  role="button" style="margin-right:0.5rem" href="{% url 'account_login' %}">Login</a>
+              <a class="btn btn-outline-success" role="button" href="{% url 'account_signup' %}">Sign up</a>
           </form>
 
         </ul>

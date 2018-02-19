@@ -94,10 +94,10 @@ class FriendshipRequest(models.Model):
             to_user=self.to_user
         )
 
-        relation2 = Friend.objects.create(
-            from_user=self.to_user,
-            to_user=self.from_user
-        )
+        # relation2 = Friend.objects.create(
+        #     from_user=self.to_user,
+        #     to_user=self.from_user
+        # )
 
         friendship_request_accepted.send(
             sender=self,
