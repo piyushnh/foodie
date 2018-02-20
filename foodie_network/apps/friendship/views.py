@@ -118,6 +118,14 @@ def friendship_requests_detail(request, friendship_request_id, template_name='fr
 
     return render(request, template_name, {'friendship_request': f_request})
 
+@login_required
+def remove_friend(request, friend_username):
+    """ Remove a particular person as friend """
+    friend = user_model.objects.filter(username = friend_username)
+    user = request.user
+    successful = Friend.objects.remove_friend(friend, user)
+    if successful:
+        return redirect("userprofiles:public_profile", kwargs={'pk':friend.id})
 
 def followers(request, username, template_name='friendship/follow/followers_list.html'):
     """ List this user's followers """

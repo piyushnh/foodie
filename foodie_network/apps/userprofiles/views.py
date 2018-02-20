@@ -15,6 +15,7 @@ User = get_user_model()
 
 class PublicProfileView(LoginRequiredMixin,DetailView):
     model = User
+    context_object_name = 'other_user'
     template_name = 'userprofiles/public_profile.html'
 
 class UserProfileView(LoginRequiredMixin,DetailView):

@@ -65,3 +65,12 @@ def friend_rejected_count(user):
     Inclusion tag to display the count of rejected friend requests
     """
     return {'friend_rejected_count': len(Friend.objects.rejected_requests(user))}
+
+#my template tags
+
+@register.simple_tag(takes_context = True)
+def are_they_friends(context):
+     user1 = context['user']
+     user2 = context['other_user']
+     flag = Friend.objects.are_friends(user1, user2)
+     return flag

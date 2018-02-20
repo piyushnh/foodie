@@ -1,24 +1,43 @@
 {% extends "base.html" %}
+{% load friendshiptags %}
 
 {% block body_block %}
 <div class="container">
 
-<div class="card" style="width: 45rem;margin:auto;height:50rem;">
+<div class="card" style="width: 45rem; margin:auto; height:auto;">
 
-  <img class="card-img-top" src="{{user.profile.profile_pic.url}}" alt="https://static-prod.testony.com/img/defaultavatar-8ab1ea5e26.jpg">
+  <img class="card-img-top" src="{{other_user.profile.profile_pic.url}}" style="height:45rem;" alt="https://static-prod.testony.com/img/defaultavatar-8ab1ea5e26.jpg">
 
   <div class="card-body">
-    <h5 class="card-title">{{user.first_name}} {{user.last_name}}</h5>
+    <h5 class="card-title">{{other_user.first_name}} {{other_user.last_name}}</h5>
     <p class="card-text">some status shit will be written here</p>
   </div>
   <ul class="list-group list-group-flush">
-    <li class="list-group-item">DOB: {{user.profile.date_of_birth|date:"D, d /m /Y"}}</li>
+    <li class="list-group-item">DOB: {{other_user.profile.date_of_birth|date:"D, d /m /Y"}}</li>
     <li class="list-group-item">Dapibus ac facilisis in</li>
     <li class="list-group-item">Vestibulum at eros</li>
   </ul>
+
   <div class="card-body">
-    <a href="{% url 'friendship:friendship_add_friend' user.username %}" class="btn btn-primary btn-lg active card-link" role="button" aria-pressed="true" >Add friend</a>
-    <a href="{% url 'friendship:follower_add' user.username %}" class="btn btn-primary btn-lg active card-link" role="button" aria-pressed="true">Follow</a>
+    {% are_they_friends as are_friends %}
+    {% if are_friends %}
+    <div class="btn-group dropup">
+      <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Friends
+      </button>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="#">Some action</a>
+        <a class="dropdown-item" href="#">Another action</a>
+        <a class="dropdown-item" href="#">Something else here</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="{% url 'friendship:remove_friend' other_user.username%}">Unfriend</a>
+      </div>
+    </div>
+
+    {% else %}
+    <a href="{% url 'friendship:friendship_add_friend' other_user.username %}" class="btn btn-primary btn-lg active card-link" role="button" aria-pressed="true" >Add friend</a>
+    {% endif %}
+    <a href="{% url 'friendship:follower_add' other_user.username %}" class="btn btn-primary btn-lg active card-link" role="button" aria-pressed="true">Follow</a>
   </div>
 </div>
 
