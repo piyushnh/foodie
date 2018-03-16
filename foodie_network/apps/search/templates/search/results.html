@@ -7,7 +7,8 @@
       <br>
       <!--using each_user because user is a keyword -->
       {% for each_user in users %}
-            <a href="{% url 'userprofiles:public_profile' pk=each_user.pk %}"><h3>{{each_user.first_name}} {{each_user.last_name}}</h3></a>
+
+            {% include "search/list_item.html" with user=each_user %}
 
             <br><br>
       {% endfor %}
