@@ -1,6 +1,35 @@
 {% extends "base.html" %}
 
 {% block body_block %}
+
+<div class="container" >
+  <div class="card" style="style="width: 45rem; margin:auto; height:auto;"">
+
+    <div class="card-body">
+      <img  style="width:20%; margin-right:2em;" class="rounded float-left" src="{{user.profile.profile_pic.url}}" alt="Card image cap">
+     <div style="margin:auto;">
+       <h5 class="card-title">{{user.first_name}} {{user.last_name}}</h5>
+       <p class="card-text">{{user.profile.display_status}}</p>
+     </div>
+
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">DOB: {{user.profile.date_of_birth|date:"D, d /m /Y"}}</li>
+      <li class="list-group-item"><a href="{% url 'friendship:friendship_view_friends' user.username%}">View Friends</a></li>
+    </ul>
+    <div class="card-body">
+      <a href="{% url 'userprofiles:profile_form' pk=user.pk %}" class="card-link btn btn-primary" role="button">Edit profile</a>
+
+    </div>
+  </div>
+</div>
+
+
+
+{% endblock %}
+
+
+
 <div class="container">
   <div class="jumbotron">
     <h2>Name: {{user.first_name}} {{user.last_name}}</h2>
@@ -11,6 +40,4 @@
 
     <br>
   </div>
-</div>
-
-{% endblock %}
+  </div>

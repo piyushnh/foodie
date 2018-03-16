@@ -17,9 +17,10 @@ def get_year():
 years = get_year()
 class ProfileForm(forms.ModelForm):
     date_of_birth = forms.DateField(widget=forms.SelectDateWidget(years = years))
+    # display_status = forms.CharField(widget=forms.Textarea)
     class Meta:
         model = Profile
-        fields = ('date_of_birth', 'profile_pic')
+        fields = ('date_of_birth', 'profile_pic', 'display_status')
 
 class UserForm(forms.ModelForm):
     class Meta:

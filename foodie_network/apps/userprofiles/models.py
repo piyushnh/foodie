@@ -13,6 +13,7 @@ class Profile(models.Model):
     date_of_birth = models.DateField(blank=True, null = True)
     #not sure of this null = true
     profile_pic = models.ImageField(upload_to = 'userprofiles/profile_pics',blank = True, null=True )
+    display_status = models.TextField(default="Hey there! Welcome to my profile!")
 
     # def get_absolute_url(self):
     #     return reverse('userprofiles:profile_info', kwargs={'id':self.pk})
