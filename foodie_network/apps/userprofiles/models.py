@@ -1,8 +1,9 @@
 from django.db import models
-from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model
 from django.conf import settings
 from django.urls import reverse
 
+User = get_user_model()
 #signal handling
 from django.db.models.signals import post_save, post_init
 from django.dispatch import receiver

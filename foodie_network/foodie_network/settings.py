@@ -139,6 +139,7 @@ STATICFILES_DIRS = [
 
 ]
 
+AUTH_USER_MODEL = 'custom_account.User'
 
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
