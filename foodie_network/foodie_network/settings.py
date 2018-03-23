@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'apps.custom_account',
     'apps.userprofiles',
     'apps.search',
+    'apps.restaurants',
 
 
 ] + ALLAUTH_INSTALLED_APPS
