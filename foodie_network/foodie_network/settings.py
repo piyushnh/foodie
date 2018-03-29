@@ -45,7 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.sites',
 
     'apps.friendship',
-    'apps.custom_account',
+    # 'apps.custom_account',
     'apps.userprofiles',
     'apps.search',
     'apps.restaurants',
@@ -139,7 +139,7 @@ STATICFILES_DIRS = [
 
 ]
 
-AUTH_USER_MODEL = 'custom_account.User'
+# AUTH_USER_MODEL = 'custom_account.User'
 
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
