@@ -7,4 +7,3 @@ In order to run the application :
 6. Enter “127.0.0.1:8000” in the browser and login using the following credentials (to test) :
                        Email: akhil@gmail.com
                        Password : testpassword
-
