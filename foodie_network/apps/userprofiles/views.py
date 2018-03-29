@@ -15,6 +15,7 @@ User = get_user_model()
 
 class PublicProfileView(LoginRequiredMixin,DetailView):
     model = User
+    context_object_name = 'other_user'
     template_name = 'userprofiles/public_profile.html'
 
 class UserProfileView(LoginRequiredMixin,DetailView):
@@ -33,10 +34,8 @@ def update_profile(request,pk):
             user_form.save()
             profile_form.save()
             messages.success(request, "Yay! You updated the details successfully!")
-            return redirect('userprofiles:profile', pk=pk)
+            return redirect('userprofiles:user_profile', pk=pk)
         else:
-            for i in range(10):
-                print('fuck')
             messages.error(request,("Please fix the errors!"))
     else:
         user_form = UserForm(instance = request.user)

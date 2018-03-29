@@ -43,9 +43,12 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'debug_toolbar',
     'django.contrib.sites',
-    'apps.custom_account',
+
+    'apps.friendship',
+    # 'apps.custom_account',
     'apps.userprofiles',
     'apps.search',
+    'apps.restaurants',
 
 
 ] + ALLAUTH_INSTALLED_APPS
@@ -133,9 +136,10 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
-    
+
 ]
 
+# AUTH_USER_MODEL = 'custom_account.User'
 
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'

@@ -1,17 +1,21 @@
 {% extends "base.html" %}
 
 {% block body_block %}
+    <div class="container">
+      {% if  users.count%}
+      <h2>The search results are:</h2>
+      <br>
+      <!--using each_user because user is a keyword -->
+      {% for each_user in users %}
 
-    {% if  users.count%}
-    <h2>The search results are:</h2>
-    <br>
-    {% for user in users %}
-          <a href="{% url 'userprofiles:public_profile' pk=user.pk %}"><h3>{{user.first_name}} {{user.last_name}}</h3></a>
+            {% include "search/list_item.html" with user=each_user %}
 
-          <br><br>
-    {% endfor %}
+            <br><br>
+      {% endfor %}
 
-    {% else %}
-    <h1>Oops! No results found!</h1>
-    {% endif %}
+      {% else %}
+      <h1>Oops! No results found!</h1>
+      {% endif %}
+    </div>
+
 {% endblock %}

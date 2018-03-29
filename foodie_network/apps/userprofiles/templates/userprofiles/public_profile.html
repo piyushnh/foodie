@@ -1,21 +1,44 @@
 {% extends "base.html" %}
+{% load friendshiptags %}
 
 {% block body_block %}
+<div class="container" >
+  <div class="card" style="style="width: 45rem; margin:auto; height:auto;"">
 
-{% if user.profile %}
-<div class="jumbotron">
-  <h2>Name: {{user.first_name}} {{user.last_name}}</h2>
-  {% if  user.profile.date_of_birth%}<h2>DOB: {{user.profile.date_of_birth|date:"D, d /m /Y"}}</h2>{% endif %}
-  {% if user.profile.profile_pic %}<img src="{{user.profile.profile_pic.url}}">{% endif %}
+    <div class="card-body">
+      <img  style="width:20%; margin-right:2em;" class="rounded float-left" src="{{other_user.profile.profile_pic.url}}"
+         alt="http://watchfit.com/images/empty_profile_300.png?&width=100&imageType=jpg&quality=85">
+     <div style="margin:auto;">
+       <h5 class="card-title">{{other_user.first_name}} {{other_user.last_name}}</h5>
+       <p class="card-text">{{other_user.profile.display_status}}</p>
+     </div>
 
-  <br>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">DOB: {{other_user.profile.date_of_birth|date:"D, d /m /Y"}}</li>
+      <li class="list-group-item"><a href="{% url 'friendship:friendship_view_friends' other_user.username%}">View Friends</a></li>
+    </ul>
+    <div class="card-body">
+      {% are_they_friends as are_friends %}
+      {% if are_friends %}
+      <div class="btn-group dropup">
+        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Friends
+        </button>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="#">Some action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <a class="dropdown-item" href="#">Something else here</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="{% url 'friendship:remove_friend' other_user.username%}">Unfriend</a>
+        </div>
+      </div>
+
+      {% else %}
+      <a href="{% url 'friendship:friendship_add_friend' other_user.username %}" class="btn btn-primary btn-lg active card-link" role="button" aria-pressed="true" >Add friend</a>
+      {% endif %}
+      <a href="{% url 'friendship:follower_add' other_user.username %}" class="btn btn-primary card-link" role="button" aria-pressed="true">Follow</a>
+    </div>
+  </div>
 </div>
-
-{% else %}
-<h2>Oops! Nothing to display!</h2>
-
-
-
-{% endif %}
-
 {% endblock %}

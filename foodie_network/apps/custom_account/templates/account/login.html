@@ -1,34 +1,13 @@
-{% extends "account/base.html" %}
+{% extends "base.html" %}
 
-
-<script>
-  window.fbAsyncInit = function() {
-    FB.init({
-      appId      : '2032029067076456',
-      cookie     : true,
-      xfbml      : true,
-      version    : 'v2.11'
-    });
-
-    FB.AppEvents.logPageView();
-
-  };
-
-  (function(d, s, id){
-     var js, fjs = d.getElementsByTagName(s)[0];
-     if (d.getElementById(id)) {return;}
-     js = d.createElement(s); js.id = id;
-     js.src = "https://connect.facebook.net/en_US/sdk.js";
-     fjs.parentNode.insertBefore(js, fjs);
-   }(document, 'script', 'facebook-jssdk'));
-</script>
 
 {% load i18n %}
 {% load account socialaccount %}
 
-{% block head_title %}{% trans "Sign In" %}{% endblock %}
+{% block title %}{% trans "Sign In" %}{% endblock %}
 
 {% block content %}
+<div class="container">
 
 <h1>{% trans "Sign In" %}</h1>
 
@@ -65,5 +44,6 @@ for a {{ site_name }} account and sign in below:{% endblocktrans %}</p>
   <a class="button secondaryAction" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
   <button class="primaryAction" type="submit">{% trans "Sign In" %}</button>
 </form>
+</div>
 
 {% endblock %}

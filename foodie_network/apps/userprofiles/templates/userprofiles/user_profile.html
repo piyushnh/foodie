@@ -2,16 +2,42 @@
 
 {% block body_block %}
 
+<div class="container" >
+  <div class="card" style="style="width: 45rem; margin:auto; height:auto;"">
 
-<div class="jumbotron">
-  <h2>Name: {{user.first_name}} {{user.last_name}}</h2>
-  {% if  user.profile.date_of_birth%}<h2>DOB: {{user.profile.date_of_birth|date:"D, d /m /Y"}}</h2>{% endif %}
-  {% if user.profile.profile_pic %}<img src="{{user.profile.profile_pic.url}}">{% endif %}
-  <h3><a href="{% url 'userprofiles:profile_form' pk=user.pk %}">Edit Profile</a></h3>
+    <div class="card-body">
+      <img  style="width:20%; margin-right:2em;" class="rounded float-left" src="{{user.profile.profile_pic.url}}" alt="Card image cap">
+     <div style="margin:auto;">
+       <h5 class="card-title">{{user.first_name}} {{user.last_name}}</h5>
+       <p class="card-text">{{user.profile.display_status}}</p>
+     </div>
 
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">DOB: {{user.profile.date_of_birth|date:"D, d /m /Y"}}</li>
+      <li class="list-group-item"><a href="{% url 'friendship:friendship_view_friends' user.username%}">View Friends</a></li>
+    </ul>
+    <div class="card-body">
+      <a href="{% url 'userprofiles:profile_form' pk=user.pk %}" class="card-link btn btn-primary" role="button">Edit profile</a>
 
-  <br>
+    </div>
+  </div>
 </div>
 
 
+
 {% endblock %}
+
+
+
+<div class="container">
+  <div class="jumbotron">
+    <h2>Name: {{user.first_name}} {{user.last_name}}</h2>
+    {% if  user.profile.date_of_birth%}<h2>DOB: {{user.profile.date_of_birth|date:"D, d /m /Y"}}</h2>{% endif %}
+    {% if user.profile.profile_pic %}<img src="{{user.profile.profile_pic.url}}">{% endif %}
+    <h3><a href="{% url 'userprofiles:profile_form' pk=user.pk %}">Edit Profile</a></h3>
+
+
+    <br>
+  </div>
+  </div>
