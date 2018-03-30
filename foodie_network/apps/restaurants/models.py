@@ -11,6 +11,7 @@ class Restaurant(models.Model):
     location = models.CharField(max_length=200, blank=False)
     phone_number = models.CharField(max_length = 10, blank=False)
     rating = models.DecimalField(max_digits=2, decimal_places = 1)
+    website_url = models.URLField(max_length=100, default='')
 
 
     def __str__(self):
