@@ -8,6 +8,6 @@ app_name = 'restaurants'
 urlpatterns = [
 url(r'^details/(?P<pk>\d+)/$', views.RestaurantDetailView.as_view(), name = 'restaurant_detail'),
 url(r'^new/$', views.RestaurantCreateView.as_view(), name = 'new_restaurant'),
-url(r'^/(?P<pk>\d+)/review$', views.add_review, name='add_review'),
+url(r'^(?P<pk>\d+)/review$', views.add_review, name='add_review'),
 url(r'^list$', views.RestaurantListView.as_view(), name='restaurant_list'),
 ]
