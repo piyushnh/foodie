@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.views.generic import DetailView
+from django.views.generic import DetailView, ListView
 from django.views.generic.edit import CreateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth import get_user_model
@@ -23,6 +23,10 @@ class RestaurantDetailView(LoginRequiredMixin, DetailView):
         context['reviews'] = Review.objects.filter(writer = self.request.user)
         return context
 
+class RestaurantListView(LoginRequiredMixin, ListView):
+    model = Restaurant
+    context_object_name = 'restaurants'
+    template_name = 'restaurants/restaurants_list.html'
 
 class RestaurantCreateView(LoginRequiredMixin, CreateView):
     model = Restaurant
