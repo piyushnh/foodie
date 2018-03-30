@@ -1,3 +1,78 @@
-.timepass{
-  color:red;
+body {
+  background: url("../../../media/webpage/back.jpg");
+  background-position: top;
+  background-size: cover;
+}
+
+p label {
+  margin-bottom: 3px;
+}
+
+ul {
+  list-style-type: none;
+}
+
+ul li {
+  width : 400px;
+  margin-left: 40px;
+}
+
+ul li:nth-of-type(1) {
+  background: #3B5998;
+  border-radius: 3px;
+  margin-bottom: 5px;
+  margin-top: 10px;
+}
+
+ul li:nth-of-type(2) {
+  background: #db3236;
+  border-radius: 3px;
+}
+
+.facebook , .google{
+  font-size: 20px;
+  margin-left: 160px;
+  padding: 3px;
+  text-align: center;
+  color : white;
+  outline: none;
+}
+
+.facebook:hover ,.google:hover {
+  color : white;
+  text-decoration: none;
+}
+
+
+
+.container .jumbotron {
+  width : 80%;
+  max-width: 600px;
+  background-color: rgba(0,0,0,0.1);
+  margin : 10% auto;
+  padding: 20px;
+}
+
+.login-or {
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.form {
+  margin : 10px auto;
+  width : 80%;
+}
+
+#id_login {
+  width : 100%;
+}
+#id_password {
+  width : 100%
+}
+
+
+h2 {
+  text-align: center;
+  font-weight: 400 !important;
+  font-size: 100px;
 }
