@@ -1,9 +1,11 @@
 {% extends "base.html" %}
-
+{% load static %}
 {% load i18n %}
 
 {% block title %}{% trans "Signup" %}{% endblock %}
-
+{% block css_lins %}
+<link rel="stylesheet" href="{%static 'css/account/signup.css'%}">
+{% endblock %}
 {% block content %}
 <div class="container">
 

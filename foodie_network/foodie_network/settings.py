@@ -45,7 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.sites',
 
     'apps.friendship',
-    # 'apps.custom_account',
+    'apps.custom_account',
     'apps.userprofiles',
     'apps.search',
     'apps.restaurants',

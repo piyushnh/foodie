@@ -1,10 +1,14 @@
 {% extends "base.html" %}
+{% load static %}
 
 
 {% load i18n %}
 {% load account socialaccount %}
 
 {% block title %}{% trans "Sign In" %}{% endblock %}
+{% block css_links %}
+<link rel="stylesheet" href="{%static 'css/account/login.css' %}">
+{% endblock %}
 
 {% block content %}
 <div class="container">
@@ -34,6 +38,8 @@ for a {{ site_name }} account and sign in below:{% endblocktrans %}</p>
 <p>{% blocktrans %}If you have not created an account yet, then please
 <a href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}</p>
 {% endif %}
+
+<h1 class="timepass">Piyush jhefueh </h1>
 
 <form class="login" method="POST" action="{% url 'account_login' %}">
   {% csrf_token %}
