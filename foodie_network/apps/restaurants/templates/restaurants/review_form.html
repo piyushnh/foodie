@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <div class="container">
+    <div class="jumbotron">
+      <h3>Write your Review here</h3>
+      <form  method="post">
+         {% csrf_token %}
+         {{form.as_p}}
+
+         <input type="submit" class="btn btn-success" value="Post Review">
+      </form>
+    </div>
+    </div>
+
+{% endblock %}

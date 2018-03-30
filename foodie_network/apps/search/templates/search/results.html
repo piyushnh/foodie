@@ -3,18 +3,35 @@
 {% block body_block %}
     <div class="container">
       {% if  users.count%}
-      <h2>The search results are:</h2>
+      <h2>The users are:</h2>
       <br>
       <!--using each_user because user is a keyword -->
       {% for each_user in users %}
 
-            {% include "search/list_item.html" with user=each_user %}
+            {% include "search/user_list_item.html" with user=each_user %}
 
             <br><br>
       {% endfor %}
 
       {% else %}
-      <h1>Oops! No results found!</h1>
+      <h1>Oops! No Users found!</h1>
+      {% endif %}
+
+      <hr>
+
+      {% if  restaurants.count %}
+      <h2>The restaurants are:</h2>
+      <br>
+      <!--using each_user because user is a keyword -->
+      {% for restaurant in restaurants %}
+
+            {% include "search/restaurant_list_item.html" with restaurant=restaurant %}
+
+            <br><br>
+      {% endfor %}
+
+      {% else %}
+      <h1>Oops! No restaurants found!</h1>
       {% endif %}
     </div>
 

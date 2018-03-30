@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container">
+  <div class="card" >
+    <img class="card-img-top" height="300em"  src="{{restaurant.cover_pic.url}}" alt="Cover Pic Here">
+    <div class="card-body">
+      <h5 class="card-title">{{restaurant.name}}</h5>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">
+        <div class="row">
+          <div class="col-sm">
+            Location: {{restaurant.location}}
+          </div>
+          <div class="col-sm">
+            Phone no. : {{restaurant.phone_number}}
+          </div>
+        </div>
+      </li>
+
+      <li class="list-group-item">Rating: {{restaurant.rating}}</li>
+    </ul>
+    <div class="card-body">
+      <a href="#" class="card-link">Website link</a>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        Reviews
+      </div>
+      <div class="card-body">
+
+           <a href="{% url 'restaurants:add_review' pk=restaurant.pk %}" role="button" class="btn btn-info">Post Review</a>
+           {% if reviews.count %}
+
+              {% for review in reviews %}
+                <hr>
+                <blockquote class="blockquote mb-0">
+                  <p>{{review}}</p>
+                  <footer class="blockquote-footer"> <cite title="Source Title">{{review.writer.first_name}} {{review.writer.first_name}}</cite></footer>
+                </blockquote>
+                <hr>
+
+              {% endfor %}
+
+           {% else %}
+           <p>No Reviews Yet</p>
+
+           {% endif %}
+
+
+
+      </div>
+    </div>
+  </div>
+
+
+</div>
+
+
+
+{% endblock %}
