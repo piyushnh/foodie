@@ -19,10 +19,8 @@ class RestaurantDetailView(LoginRequiredMixin, DetailView):
     model = Restaurant
     template_name = 'restaurants/restaurant_page.html'
     def get_context_data(self, **kwargs):
-
         context = super().get_context_data(**kwargs)
-        # Add in a QuerySet of all the books
-        context['reviews'] = Review.objects.filter(writer = self.kwargs['pk'])
+        context['reviews'] = Review.objects.filter(writer = self.request.user)
         return context
 
 

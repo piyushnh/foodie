@@ -37,8 +37,8 @@
               {% for review in reviews %}
                 <hr>
                 <blockquote class="blockquote mb-0">
-                  <p>{{review}}</p>
-                  <footer class="blockquote-footer"> <cite title="Source Title">{{review.writer.first_name}} {{review.writer.first_name}}</cite></footer>
+                  <p>{{review.review}}</p>
+                  <footer class="blockquote-footer"> <cite title="Source Title">{{review.writer.first_name}} {{review.writer.last_name}}</cite></footer>
                 </blockquote>
                 <hr>
 
