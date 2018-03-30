@@ -1,6 +1,12 @@
 {% extends "base.html" %}
+{% load static %}
+
+{% block css_links %}
+<link rel="stylesheet" href="{%static 'css/base.css' %}">
+{% endblock %}
 
 {% block content %}
+  <br>
   <div class="container">
     <div class="jumbotron">
       <h3>Write your Review here</h3>

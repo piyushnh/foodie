@@ -1,30 +1,46 @@
 {% extends "base.html" %}
+{% load static %}
+
+
+{% block css_links %}
+<link rel="stylesheet" href="{%static 'css/restaurants/home.css' %}">
+<link rel="stylesheet" href="{%static 'css/base.css' %}">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+  integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+{% endblock %}
 
 {% block content %}
 
-<div class="container">
-  <div class="card" >
-    <img class="card-img-top" height="300em"  src="{{restaurant.cover_pic.url}}" alt="Cover Pic Here">
-    <div class="card-body">
-      <h5 class="card-title">{{restaurant.name}}</h5>
-    </div>
-    <ul class="list-group list-group-flush">
-      <li class="list-group-item">
-        <div class="row">
-          <div class="col-sm">
-            Location: {{restaurant.location}}
-          </div>
-          <div class="col-sm">
-            Phone no. : {{restaurant.phone_number}}
-          </div>
+<div class="main">
+  <div class="row">
+      <div class="col-sm-6">
+        <img class="card-img-top" height="300em"  src="{{restaurant.cover_pic.url}}" alt="Cover Pic Here">
+      </div>
+      <div class="col-sm-6">
+        <div class="card-header">
+          <h1 class="card-title">{{restaurant.name}}</h1>
         </div>
-      </li>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">
+            <div class="row">
+              <div class="col-sm">
+                Location: {{restaurant.location}}
+              </div>
+              <div class="col-sm">
+                Phone no. : {{restaurant.phone_number}}
+              </div>
+            </div>
+          </li>
 
-      <li class="list-group-item">Rating: {{restaurant.rating}}</li>
-    </ul>
-    <div class="card-body">
-      <a href="#" class="card-link">Website link</a>
-    </div>
+          <li class="list-group-item">Rating: {{restaurant.rating}}</li>
+        </ul>
+        <div class="card-body">
+          <a href="#" class="card-link">Website link</a>
+        </div>
+      </div>
+
+  </div>
+  <div class="row" >
     <div class="card">
       <div class="card-header">
         Reviews
@@ -46,11 +62,7 @@
 
            {% else %}
            <p>No Reviews Yet</p>
-
            {% endif %}
-
-
-
       </div>
     </div>
   </div>
